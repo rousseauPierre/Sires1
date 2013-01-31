@@ -3,7 +3,6 @@ package othello;
 public class Constantes {
 
 	public enum TypeCase {
-
 		VIDE, BLANC, NOIR
 	};
 
