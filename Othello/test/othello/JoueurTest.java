@@ -11,7 +11,7 @@ public class JoueurTest {
 
 	@Before
 	public void setUp() throws Exception {
-		j = new Joueur(Constantes.BLANC, 0, "Test");
+		j = new Joueur(Constantes.BLANC, "Test", 0);
 	}
 
 	@Test

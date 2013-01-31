@@ -2,29 +2,30 @@ package othello;
 
 public class Joueur {
 
-	private int couleur, points;
+	private char couleur;
 	private String nom;
+	private int points;
 
-    public Joueur(int couleur, int points, String nom) {
+    public Joueur(char couleur, String nom, int points) {
         this.couleur = couleur;
-        this.points = points;
         this.nom = nom;
+        this.points = points;
     }
 
     public int getCouleur() {
         return couleur;
     }
 
+    public String getNom() {
+        return nom;
+    }
+    
     public int getPoints() {
         return points;
     }
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    public String getNom() {
-        return nom;
     }
     
 }

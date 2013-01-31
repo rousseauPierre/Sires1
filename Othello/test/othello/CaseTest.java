@@ -32,24 +32,24 @@ public class CaseTest {
 
 	@Test
 	public void testGetValeur() {
-		assertEquals(c.getValeur(), Constantes.TypeCase.VIDE);
+		assertEquals(c.getValeur(), Constantes.VIDE);
 	}
 
 	@Test
 	public void testSetValeur() {
-		c.setValeur(Constantes.TypeCase.BLANC);
-		assertEquals(c.getValeur(), Constantes.TypeCase.BLANC);
+		c.setValeur(Constantes.BLANC);
+		assertEquals(c.getValeur(), Constantes.BLANC);
 	}
 
 	@Test
 	public void testToString() {
-		assertEquals(c.toString(), "Case [x=0, y=0, valeur=VIDE]");
+		assertEquals(c.toString(), "Case [x=0, y=0, valeur= ]");
 	}
 
 	@Test
 	public void testEquals() {
 		assertEquals(c, c2);
-		c2.setValeur(Constantes.TypeCase.BLANC);
+		c2.setValeur(Constantes.BLANC);
 		assertFalse(c.equals(c2));
 	}
 

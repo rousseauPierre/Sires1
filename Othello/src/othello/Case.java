@@ -1,16 +1,16 @@
 package othello;
 
-import othello.Constantes.TypeCase;
+import othello.Constantes;
 
 public class Case {
 
 	private int x, y;
-	private Constantes.TypeCase valeur;
+	private char valeur;
 
 	public Case(int x, int y) {
 		this.x = x;
 		this.y = y;
-		valeur = Constantes.TypeCase.VIDE;
+		valeur = Constantes.VIDE;
 	}
 	
 	public int getX() {
@@ -21,11 +21,11 @@ public class Case {
 		return y;
 	}
 	
-	public TypeCase getValeur() {
+	public char getValeur() {
 		return valeur;
 	}
 
-	public void setValeur(TypeCase valeur) {
+	public void setValeur(char valeur) {
 		this.valeur = valeur;
 	}
 
@@ -36,7 +36,7 @@ public class Case {
 	@Override
 	public int hashCode() {
 		int hash = 5;
-		hash = 23 * hash + (this.valeur != null ? this.valeur.hashCode() : 0);
+		hash = 23 * hash + this.valeur;
 		hash = 23 * hash + this.x;
 		hash = 23 * hash + this.y;
 		return hash;
