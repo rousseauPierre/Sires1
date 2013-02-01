@@ -12,7 +12,7 @@ public class Joueur {
         this.points = points;
     }
 
-    public int getCouleur() {
+    public char getCouleur() {
         return couleur;
     }
 
