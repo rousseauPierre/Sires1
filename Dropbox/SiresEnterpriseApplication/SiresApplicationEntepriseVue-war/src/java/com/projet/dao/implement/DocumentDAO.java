@@ -28,7 +28,7 @@ public class DocumentDAO extends DAO<Document> {
         
         try {
            cx = this.connect; 
-st = cx.prepareStatement("select titre, prive, id_version, url, editable from document d, version v where d.id_document = v.id_document and d.id_document = ?");
+st = cx.prepareStatement("select titre, prive, id_version, url, editable from DOCUMENT d, version v where d.id_document = v.id_document and d.id_document = ?");
            st.setInt(1, id);
            rs = st.executeQuery();
          
@@ -67,10 +67,10 @@ st = cx.prepareStatement("select titre, prive, id_version, url, editable from do
        
         try {
            cx = this.connect;
-           st = cx.prepareStatement("insert into document (id_document, titre, prive) values (?, ?, ?)");
-           st.setInt(1, obj.getId_Document());
-           st.setString(2, obj.getTitre());
-           st.setBoolean(3, obj.getPrive());
+           st = cx.prepareStatement("insert into DOCUMENT (id_document, titre, prive) values (default, ?, ?)");
+        
+           st.setString(1, obj.getTitre());
+           st.setBoolean(2, obj.getPrive());
            st.executeUpdate();
          
         }catch(SQLException e){
@@ -87,7 +87,7 @@ st = cx.prepareStatement("select titre, prive, id_version, url, editable from do
          
           try {
            cx = this.connect;
-           st = cx.prepareStatement("update document set titre = ?, prive = ? where id_document = ?");
+           st = cx.prepareStatement("update DOCUMENT set titre = ?, prive = ? where id_document = ?");
            st.setString(1, obj.getTitre());
            st.setBoolean(2, obj.getPrive());
            st.setInt(3, obj.getId_Document());
@@ -106,7 +106,7 @@ st = cx.prepareStatement("select titre, prive, id_version, url, editable from do
         
          try {
            cx = this.connect;
-           st = cx.prepareStatement("delete from document where id_document = ?");
+           st = cx.prepareStatement("delete from DOCUMENT where id_document = ?");
            st.setInt(1, obj.getId_Document());
            st.executeUpdate();
          

@@ -29,7 +29,7 @@ public class VersionDAO extends DAO<Version> {
          
           try {
            cx = this.connect;
-           st = cx.prepareStatement("select editable, url, id_document, date, id_utilisateur from version v, editer e where v.id_version = e.id_version and v.id_version = ?");
+           st = cx.prepareStatement("select editable, url, id_document, date, id_utilisateur from VERSION v, editer e where v.id_version = e.id_version and v.id_version = ?");
            st.setInt(1, id);
            rs = st.executeQuery();
           
@@ -73,8 +73,7 @@ public class VersionDAO extends DAO<Version> {
           try {
               
            cx = this.connect;
-           st = cx.prepareStatement("insert into version (id_Version, editable, url, id_Document) values (?, ?, ?, ?)");
-           st.setInt(1, obj.getId_Version());
+           st = cx.prepareStatement("insert into VERSION (id_Version, editable, url, id_Document) values (default, ?, ?, ?)");
            st.setBoolean(2, obj.getEditable());
            st.setString(3, obj.getUrl());
            st.setInt(4, obj.getDocument().getId_Document());
@@ -95,7 +94,7 @@ public class VersionDAO extends DAO<Version> {
           try {
               
            cx = this.connect;
-           st = cx.prepareStatement("update version set editable = ?, url = ?, id_Document = ? where id_version = ?");
+           st = cx.prepareStatement("update VERSION set editable = ?, url = ?, id_Document = ? where id_version = ?");
            
            st.setBoolean(1, obj.getEditable());
            st.setString(2, obj.getUrl());
@@ -117,7 +116,7 @@ public class VersionDAO extends DAO<Version> {
           try {
               
            cx = this.connect;
-           st = cx.prepareStatement("delete from version where id_version = ?");
+           st = cx.prepareStatement("delete from VERSION where id_version = ?");
            st.setInt(1, obj.getId_Version());
 
            st.executeUpdate();

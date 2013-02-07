@@ -32,7 +32,7 @@ public class EditerDAO extends DAO<Editer> {
           try {
               
            cx = this.connect;
-           st = cx.prepareStatement("insert into editer (date, id_Version, id_Utilisateur) values (?, ?, ?)");
+           st = cx.prepareStatement("insert into EDITER (date, id_Version, id_Utilisateur) values (?, ?, ?)");
            st.setDate(1, obj.getDate());
            st.setInt(2, obj.getVersion().getId_Version());
            st.setInt(3, obj.getUtilisateur().getId_Utilisateur());
@@ -52,7 +52,7 @@ public class EditerDAO extends DAO<Editer> {
           try {
               
            cx = this.connect;
-           st = cx.prepareStatement("update editer set date = ? where id_utilisateur = ? and id_version = ?");
+           st = cx.prepareStatement("update EDITER set date = ? where id_utilisateur = ? and id_version = ?");
            
            st.setDate(1, obj.getDate());
            
@@ -72,7 +72,7 @@ public class EditerDAO extends DAO<Editer> {
          
           try {
            cx = this.connect;
-           st = cx.prepareStatement("delete from editer where id_utilisateur = ? and id_version = ?");
+           st = cx.prepareStatement("delete from EDITER where id_utilisateur = ? and id_version = ?");
            st.setInt(1, obj.getUtilisateur().getId_Utilisateur());
            st.setInt(2, obj.getVersion().getId_Version());
            st.executeUpdate();

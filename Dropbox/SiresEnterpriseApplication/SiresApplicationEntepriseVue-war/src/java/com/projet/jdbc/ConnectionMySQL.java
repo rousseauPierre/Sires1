@@ -19,15 +19,15 @@ public class ConnectionMySQL {
 	/**
 	 * URL de connection
 	 */
-	private static String url = "jdbc:mysql://localhost/projet";
+	private static String url = "jdbc:mysql://localhost/mysql";
 	/**
 	 * Nom du user
 	 */
-	private static String user = "root";
+	private static String user = "pierre";
 	/**
 	 * Mot de passe du user
 	 */
-	private static String passwd = "";
+	private static String passwd = "pierre";
 	/**
 	 * Objet Connection
 	 */

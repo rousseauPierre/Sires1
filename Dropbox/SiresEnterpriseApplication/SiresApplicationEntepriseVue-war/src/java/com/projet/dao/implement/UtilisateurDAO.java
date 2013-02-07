@@ -28,7 +28,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
          
          try {
            cx = this.connect;
-st = cx.prepareStatement("select login, code_activation, password, telephone, nom, prenom, date, id_version from utilisateur u, editer e where u.id_utilisateur = e.id_utilisateur and u.id_utilisateur = ?");
+st = cx.prepareStatement("select login, code_activation, password, telephone, nom, prenom, date, id_version from UTILISATEUR u, editer e where u.id_utilisateur = e.id_utilisateur and u.id_utilisateur = ?");
            st.setInt(1, id);
            rs = st.executeQuery();
           
@@ -74,14 +74,14 @@ st = cx.prepareStatement("select login, code_activation, password, telephone, no
          
          try {
            cx = this.connect;
-           st = cx.prepareStatement("insert into utilisateur (login, code_activation, password, telephone, nom, prenom, id_utilisateur) values (?, ?, ?, ?, ?, ?, ?)");
+           st = cx.prepareStatement("insert into UTILISATEUR (login, code_activation, password, telephone, nom, prenom, id_utilisateur) values (?, ?, ?, ?, ?, ?, default)");
            st.setString(1, obj.getLogin());
            st.setString(2, obj.getCode_activation());
            st.setString(3, obj.getPassword());
            st.setString(4, obj.getTelephone());
            st.setString(5, obj.getNom());
            st.setString(6, obj.getPrenom());
-           st.setInt(7, obj.getId_Utilisateur());
+          
            st.executeUpdate();
            
         }catch(SQLException e){
@@ -97,7 +97,7 @@ st = cx.prepareStatement("select login, code_activation, password, telephone, no
          
          try {
            cx = this.connect;
-           st = cx.prepareStatement("update utilisateur set login = ?, code_activation = ?, password = ?, telephone = ?, nom = ?, prenom = ? where id_utilisateur = ?");
+           st = cx.prepareStatement("update UTILISATEUR set login = ?, code_activation = ?, password = ?, telephone = ?, nom = ?, prenom = ? where id_utilisateur = ?");
            st.setString(1, obj.getLogin());
            st.setString(2, obj.getCode_activation());
            st.setString(3, obj.getPassword());
@@ -121,7 +121,7 @@ st = cx.prepareStatement("select login, code_activation, password, telephone, no
        
          try {
            cx = this.connect;
-           st = cx.prepareStatement("delete from utilisateur where id_utilisateur = ?");
+           st = cx.prepareStatement("delete from UTILISATEUR where id_utilisateur = ?");
            st.setInt(1, obj.getId_Utilisateur());
            st.executeUpdate();
            
