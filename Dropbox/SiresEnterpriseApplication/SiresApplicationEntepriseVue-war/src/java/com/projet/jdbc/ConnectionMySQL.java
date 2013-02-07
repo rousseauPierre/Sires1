@@ -4,27 +4,30 @@
  */
 package com.projet.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 /**
  *
  * @author biha
  */
-public class ConnectionPostgreSQL {
-    /**
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+
+public class ConnectionMySQL {
+    
+	/**
 	 * URL de connection
 	 */
-	private static String url = "jdbc:postgresql://localhost:5432/BD";
+	private static String url = "jdbc:mysql://localhost/projet";
 	/**
 	 * Nom du user
 	 */
-	private static String user = "postgres";
+	private static String user = "root";
 	/**
 	 * Mot de passe du user
 	 */
-	private static String passwd = "postgres";
+	private static String passwd = "";
 	/**
 	 * Objet Connection
 	 */
@@ -45,5 +48,4 @@ public class ConnectionPostgreSQL {
 		}		
 		return connect;	
 	}	
-    
 }

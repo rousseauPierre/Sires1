@@ -14,7 +14,7 @@ import java.util.List;
 public class Document {
     private int id_Document;
     private String titre;
-    private List<Utilisateur> listUtilisateur = new ArrayList<Utilisateur>();
+    private boolean prive;
     private List<Version> listVersion = new ArrayList<Version>();
     
     public Document(){};
@@ -33,32 +33,28 @@ public class Document {
          this.titre =titre; 
     }
     
-     public List<Utilisateur> getListUtilisateur(){
-         return this.listUtilisateur;    
+    public boolean getPrive(){
+        return this.prive;    
     }
-    public void setListUtilisateur(List<Utilisateur> listUtilisateur){
-         this.listUtilisateur = listUtilisateur; 
-    } 
-     public void addUtilisateur(Utilisateur utilisateur){
-           this.listUtilisateur.add(utilisateur);
-           utilisateur.addDocument(this);
-     }
-     public void  removeUtilisateur(Utilisateur utilisateur){
-         this.listUtilisateur.remove(utilisateur);
-     }
-     
-     public List<Version> getVersion(){
+    public void setPrive(boolean prive){
+         this.prive = prive; 
+    }    
+     public List<Version> getListVersion(){
          return this.listVersion;    
     }
-    public void setVersion(List<Version> listVersion){
+    public void setListVersion(List<Version> listVersion){
          this.listVersion = listVersion; 
     }
      public void addVersion(Version version){
            this.listVersion.add(version);
-          version.setDocument(this);
+           version.setDocument(this);
      }
      public void removeVersion(Version version){
          this.listVersion.remove(version);
      }
+     public void removeAllVersion() {
+      if (this.listVersion != null)
+         this.listVersion.clear();
+   }
     
 }

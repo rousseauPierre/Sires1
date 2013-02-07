@@ -19,7 +19,8 @@ public class Utilisateur {
     private String password;
     private String code_activation;
     private String login;
-    private List<Document> listDocument = new ArrayList<Document>();
+    private String telephone;
+    private List<Editer> listEditer = new ArrayList<Editer>();
     
     public Utilisateur(){}
     
@@ -58,19 +59,38 @@ public class Utilisateur {
        this.code_activation = code_activation;
     }
     
-    public List<Document> getListDocument(){
-       return this.listDocument;
+    public String getLogin(){
+      return this.login;
     }
-    public void setListDocument(List<Document> listDocument){
-       this.listDocument = listDocument; 
+    public void setLogin(String login){
+       this.login = login;
+    }
+    
+    public String getTelephone(){
+        return this.telephone;
+    }
+    public void setTelephone(String telephone){
+        this.telephone = telephone;
+    }
+    
+    public List<Editer> getlistEditer(){
+       return this.listEditer;
+    }
+    public void setlistEditer(List<Editer> listEditer){
+       this.listEditer = listEditer; 
        
     }
-    public void addDocument(Document document){
-      this.listDocument.add(document);
-      document.addUtilisateur(this);
+    public void addEditer(Editer editer){
+      this.listEditer.add(editer);
+      editer.setUtilisateur(this);
     }
-    public void removeDocument(Document document){
-        this.listDocument.remove(document);
+    public void removeEditer(Editer editer){
+        this.listEditer.remove(editer);
+        
     }
+     public void removeAllEditer() {
+      if (this.listEditer != null)
+         this.listEditer.clear();
+   }
     
 }

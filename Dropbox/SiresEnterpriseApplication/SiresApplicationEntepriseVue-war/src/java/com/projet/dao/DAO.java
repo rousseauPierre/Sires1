@@ -4,7 +4,7 @@
  */
 package com.projet.dao;
 
-import com.projet.jdbc.ConnectionPostgreSQL;
+import com.projet.jdbc.ConnectionMySQL;
 import java.sql.Connection;
 
 
@@ -13,7 +13,7 @@ import java.sql.Connection;
  * @author biha
  */
 public abstract class DAO<T> {
-    public Connection connect = ConnectionPostgreSQL.getInstance();
+    public Connection connect = ConnectionMySQL.getInstance();
    
         public abstract T find(int id);
         

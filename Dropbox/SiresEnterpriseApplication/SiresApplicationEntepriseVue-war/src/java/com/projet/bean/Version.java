@@ -4,7 +4,9 @@
  */
 package com.projet.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -12,9 +14,10 @@ import java.util.Date;
  */
 public class Version {
     private int id_Version;
-    private Date date;
+    private Boolean editable;  
     private String url;
     private Document document;
+    private List<Editer> listEditer = new ArrayList<Editer>();
     
     public Version(){};
     public int getId_Version(){
@@ -24,11 +27,12 @@ public class Version {
       this.id_Version = id_Version;
     
     }
-    public Date getDate(){
-      return this.date;
+    
+     public Boolean getEditable(){
+      return this.editable;
     }
-    public void setDate(Date date){
-      this.date = date;
+    public void setEditable(Boolean editable){
+      this.editable = editable;
     
     }
     public String getUrl(){
@@ -45,5 +49,24 @@ public class Version {
       this.document = document;
     
     }
-    
+   
+     // listEditer
+    public List<Editer> getListEditer(){
+         return this.listEditer;    
+    }
+    public void setListEditer(List<Editer> listEditer){
+         this.listEditer = listEditer; 
+    }
+     public void addEditer(Editer editer){
+           this.listEditer.add(editer);
+           editer.setVersion(this);
+     }
+     public void removeEditer(Editer editer){
+         this.listEditer.remove(editer);
+     }
+     public void removeAllEditer() {
+      if (this.listEditer != null)
+         this.listEditer.clear();
+   }
+   
 }
