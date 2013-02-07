@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a4j="http://richfaces.org/a4j">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="style.css" />
+        <!--#2b3a3c--> 
+    </h:head>
+
+    <script type="text/javascript">
+        setInterval("nextMessage()", 200); //update the chart every 200 ms               
+        
+        function updateMessages(xhr, status, args) {
+            if(!args.ok) return;
+            $('#chat').append('<div class="msg">['+args.user+' '+args.text+'</div>');
+        }
+        
+    </script>
+    <h:body>
+        <h:form prependId="false">
+
+            <!--            Header-->
+            <div id="header">
+                <p:inputText value="#{utilisateurBean.pseudo}"  id="pseudo"/>
+                <h:commandButton  value="Connection" action="#{messageBean.message.setUser(utilisateurBean.pseudo)}">
+                    <f:ajax execute="pseudo"/>
+                </h:commandButton>
+            </div>
+
+            <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}" 
+                             oncomplete="updateMessages(xhr, status, args);"/>
+
+
+            <!--            Panneau droit-->
+            <div id="right"> 
+                <rich:panel header="Chat" styleClass="a">
+
+                    <rich:panel styleClass="c">
+                        <h:panelGrid columns="2">
+
+                            <p:inputText value="#{messageBean.message.message}"/>
+                            <p:commandButton type="reset" value="Clear"/>
+                            <p:commandButton value="Send!" actionListener="#{messageBean.sendMessage}"/>
+                        </h:panelGrid>
+
+
+                    </rich:panel>
+                    <rich:panel styleClass="b">
+                        <h3>Live chat</h3>
+                        <div id="chat"></div>
+                    </rich:panel>
+                </rich:panel>
+            </div>
+
+            <!--Panneau gauche-->
+            <div id="left">
+                
+                    <rich:panel header="Documents" styleClass="documentsTree"  >
+                        <rich:tree id="tree"  var="node"  value="#{documentManager.init()}" toggleType="client" 
+                                   selectionChangeListener="#{documentManager.selectionChanged}" />
+                    </rich:panel> 
+
+                    <rich:panel header="Current Selection" >
+                        <h:outputText id="selectionTree" value="#{documentManager.currentSelection}" />
+<!--                        <a4j:poll render="coucou"/>-->
+                         
+                        <h:commandButton value="Selection"  >
+                            <f:ajax render="selectionTree"/>
+                        </h:commandButton>         
+
+
+                    </rich:panel>
+                    
+                <rich:panel>
+                    
+                </rich:panel>
+
+            </div>
+
+            <!--Centre-->
+            <div id="content">
+                <rich:editor id="ed" value="#{documentManager.contenu}" plugins="fullscreen" height="550">
+                </rich:editor>
+
+                <h:commandButton value="Lecture"  action="#{documentManager.lecture(documentManager.currentSelection)}">
+                    <f:ajax  render="ed"/>
+                </h:commandButton>           
+
+            </div>
+
+            <!--Footer-->
+            <div id="footer">
+            </div>
+
+        </h:form>
+    </h:body>
+   
+</html>

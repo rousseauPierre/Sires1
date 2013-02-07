@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+          <h:form>    
+        <h:panelGrid columns="2" width="100%" columnClasses="col1,col2">
+        
+            <rich:tree style="width:300px" nodeSelectListener="#{simpleTreeBean.processSelection}" 
+                reRender="selectedNode" ajaxSubmitSelection="true"  switchType="client"
+                value="#{simpleTreeBean.treeNode}" var="item" ajaxKeys="#{null}">
+            </rich:tree>
+            
+            <h:outputText escape="false" value="Selected Node: #{simpleTreeBean.nodeTitle}" id="selectedNode" />
+        
+        </h:panelGrid>
+
+    </h:form>
+    </h:body>
+</html>
+
